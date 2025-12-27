@@ -1,0 +1,39 @@
+/* Container for all boxes */
+.magic-ocr-box {
+    animation: fadeIn 0.3s ease-in;
+    z-index: 9999;
+}
+
+/* INDIVIDUAL TEXT BOXES */
+.magic-text-box {
+    position: absolute;
+    color: transparent; 
+    background: transparent;
+    border: none;
+    cursor: text; 
+    
+    /* NEW: Better Font Matching for Code */
+    font-family: "Consolas", "Monaco", "Menlo", monospace; 
+    
+    /* NEW: Squashes the box height to hug the text tightly */
+    line-height: 1; 
+    
+    white-space: nowrap;
+    pointer-events: auto;
+}
+
+/* THE FIX: Light Grey Highlight */
+.magic-text-box::selection {
+    /* Light Grey with 50% opacity so you can still see the video text through it */
+    background: rgba(200, 200, 200, 0.5); 
+    
+    /* Keep the text itself invisible */
+    color: transparent; 
+}
+
+/* Optional: When you just hover (before selecting) */
+.magic-text-box:hover {
+    /* Make the hint border very faint grey too */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.05);
+}

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Magic OCR",
+  "version": "1.0",
+  "description": "Copy text from any video instantly.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://127.0.0.1:5001/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Scan Video"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
