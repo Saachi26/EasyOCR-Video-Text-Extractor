@@ -1,14 +1,12 @@
-# 🪄 Magic OCR – Video Text Extractor
+# 🎥 EasyOCR Video Text Extractor
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Backend](https://img.shields.io/badge/Backend-Flask-blue?logo=python)](https://flask.palletsprojects.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-Chrome_Extension_(Manifest_V3)-4285F4?logo=google-chrome)]()
 
-**Magic OCR** is a Chrome extension that allows you to instantly extract **code, notes, and text from any video** playing in your browser (YouTube, Udemy, Coursera, etc.).
+**# 🎥 EasyOCR Video Text Extractor** is a Chrome extension that allows you to instantly extract **code, notes, and text from any video** playing in your browser (YouTube, Udemy, Coursera, etc.).
 
-Unlike traditional OCR extensions that struggle with motion and complex backgrounds, Magic OCR uses a **local Python backend** powered by **EasyOCR** and **OpenCV**, ensuring **high accuracy** while keeping your data **completely private**.
-
-![Magic OCR Demo](docs/demo.gif)
+Unlike traditional OCR extensions that struggle with motion and complex backgrounds, It uses a **local Python backend** powered by **EasyOCR** and **OpenCV**, ensuring **high accuracy** while keeping your data **completely private**.
 
 ---
 
@@ -73,8 +71,8 @@ This project requires **both** the backend server and the Chrome extension.
 
 Clone the repository:
 ```bash
-git clone https://github.com/Saachi26/magic-ocr.git
-cd magic-ocr/backend
+git clone https://github.com/Saachi26/EasyOCR Video Text Extractor
+.git
 ```
 
 Create and activate a virtual environment (recommended):
@@ -122,34 +120,11 @@ http://localhost:5001
 
 ## 📖 Usage
 
-1. Ensure the Python backend is running
+1. Ensure the Python server is running
 2. Open a video (YouTube, Udemy, Coursera, etc.)
-3. Click the **Magic OCR** extension icon
+3. Click the **EasyOCR Video Text Extractor** extension icon
 4. Click **Scan Video** 
 5. Wait briefly — the extracted text can now be copied to the clipboaard.
-
----
-
-## 🔧 Troubleshooting
-
-### ❌ “Failed to fetch” Error
-- Make sure the backend server is running
-- Confirm the port is `localhost:5001`
-
-### 🐢 OCR is Slow
-- EasyOCR runs faster on GPU
-- If you have an NVIDIA GPU, install CUDA-compatible PyTorch
-- CPU-only systems may take 1–3 seconds per capture
-
-### 🌐 CORS Errors
-Ensure Flask-CORS is enabled in `app.py`:
-```python
-from flask import Flask
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app)
-```
 
 ---
 
