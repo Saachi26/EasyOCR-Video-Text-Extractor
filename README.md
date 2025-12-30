@@ -38,7 +38,6 @@ graph LR
 - **Privacy First** – all processing runs locally on your machine
 - **Universal Video Support** – works on any HTML5 video player
 - **Smart Preprocessing** with OpenCV for noisy video frames
-- **GPU Acceleration** (if available) for faster OCR
 - **Clipboard Integration** for instant text copying
 
 ---
