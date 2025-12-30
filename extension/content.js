@@ -1,4 +1,3 @@
-// Listen for the "Scan" click from the popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "scan_video") {
         captureAndProcess();
@@ -21,13 +20,13 @@ async function captureAndProcess() {
     const ctx = canvas.getContext("2d");
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     
-    // Convert to base64 string (like a text version of the image)
+    // Convert to base64 string
     const dataURL = canvas.toDataURL("image/jpeg");
 
-    // 2. Remove old boxes (if any)
+    // 2. Remove old boxes
     document.querySelectorAll(".magic-ocr-box").forEach(e => e.remove());
 
-    // 3. Send to Python Server
+    // 3. Send to Server
     try {
         const response = await fetch("http://127.0.0.1:5001/ocr", {
             method: "POST",
@@ -79,16 +78,8 @@ function drawOverlay(video, textData) {
         box.style.top = (item.box.y * scaleY) + "px";
         box.style.width = (item.box.width * scaleX) + "px";
         box.style.height = (item.box.height * scaleY) + "px";
-        
-        // --- THIS IS THE NEW PART ---
-        // Dynamically size the font to fill the box height
-        // 0.85 is the "magic number" to make it fit without overflowing
-        box.style.fontSize = (item.box.height * scaleY * 0.85) + "px";
-        // ----------------------------
-        
-        // Metadata for "Copy All" later
+        box.style.fontSize = (item.box.height * scaleY * 0.85) + "px"
         box.dataset.text = item.text; 
-
         container.appendChild(box);
     });
 }
