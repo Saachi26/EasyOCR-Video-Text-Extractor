@@ -1,4 +1,4 @@
-# 🎥 EasyOCR Video Text Extractor
+## 🎥 EasyOCR Video Text Extractor
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Backend](https://img.shields.io/badge/Backend-Flask-blue?logo=python)](https://flask.palletsprojects.com/)
