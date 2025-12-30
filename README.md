@@ -4,7 +4,7 @@
 [![Backend](https://img.shields.io/badge/Backend-Flask-blue?logo=python)](https://flask.palletsprojects.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-Chrome_Extension_(Manifest_V3)-4285F4?logo=google-chrome)]()
 
-**# 🎥 EasyOCR Video Text Extractor** is a Chrome extension that allows you to instantly extract **code, notes, and text from any video** playing in your browser (YouTube, Udemy, Coursera, etc.).
+**🎥 EasyOCR Video Text Extractor** is a Chrome extension that allows you to instantly extract **code, notes, and text from any video** playing in your browser (YouTube, Udemy, Coursera, etc.).
 
 Unlike traditional OCR extensions that struggle with motion and complex backgrounds, It uses a **local Python backend** powered by **EasyOCR** and **OpenCV**, ensuring **high accuracy** while keeping your data **completely private**.
 
