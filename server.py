@@ -14,23 +14,14 @@ reader = easyocr.Reader(['en'], gpu=True)
 print("✅ AI Model Loaded & Ready!")
 
 def preprocess_image(img):
-    """
-    The 'Senior Engineer' cleaning pipeline.
-    This makes blurry video frames look like crisp scanned documents.
-    """
-    # 1. UPSCALING: Resize the image to be 2x bigger (Zoom In)
-    # This helps MASSIVELY with small code font.
     img = cv2.resize(img, None, fx=2.0, fy=2.0, interpolation=cv2.INTER_CUBIC)
 
-    # 2. GRAYSCALE: Remove color syntax highlighting (confuses OCR)
+    # GRAYSCALE: Remove color syntax highlighting
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # 3. CONTRAST / THRESHOLDING (Optional but powerful)
-    # This forces text to be pure black and background pure white.
-    # Note: If this breaks 'dark mode' code, comment this line out.
-    # _, binary = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    
-    # For now, let's just use the sharpened grayscale image
+    # CONTRAST / THRESHOLDING
+    _, binary = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+ 
     return gray
 
 def read_base64_image(base64_string):
@@ -52,13 +43,10 @@ def ocr_process():
         # 1. Decode Image
         original_img = read_base64_image(image_data)
 
-        # 2. Clean the Image (The new magic step)
+        # 2. Clean the Image
         clean_img = preprocess_image(original_img)
 
         # 3. Run AI with TUNED PARAMETERS
-        # mag_ratio=2.0 -> Tells EasyOCR to magnify image internally (Critical for small text)
-        # text_threshold=0.5 -> Be stricter about what counts as text
-        # low_text=0.3 -> Help detect low-contrast text
         results = reader.readtext(
             clean_img, 
             mag_ratio=2.0,  
@@ -71,8 +59,7 @@ def ocr_process():
             if prob > 0.4: 
                 (tl, tr, br, bl) = bbox
                 
-                # IMPORTANT: Since we upscaled the image 2x, 
-                # we must divide the coordinates by 2 to match the original video size!
+                # IMPORTANT: Since we upscaled the image 2x
                 scale_down = 0.5 
                 
                 output.append({
